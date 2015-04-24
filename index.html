@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Michael" >
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Registration</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="my/css/starter-template.css" rel="stylesheet">
+    
+    <script type="text/javascript" >
+       function submitForm() 
+       {
+          
+          //Gather inputs and add it to the table:
+          var email = $("#inputEmail").val();
+          var fullName  = $("#inputName").val(); 
+          var phone = $("#inputPhone").val();          
+          
+          addToTable(fullName,email,phone);         
+          
+          return false; //This is a dynamic UI demo, not submitting to server
+       
+       }
+       
+              
+       function addToTable(fullName,email,phone) 
+       {
+          //Insert into table using jQuery: 
+          var nameCell =   '<td>' + fullName + '</td>';
+          var emailCell =  '<td>' + email + '</td>'; 
+          var phoneCell =  '<td>' + phone + '</td>';    
+          var deleteCell = '<td><button type="action" class="btn btn-danger" onclick="deleteRow(this)"> <i class="glyphicon glyphicon-remove"></i></button> </td>';            
+          
+          var tableRow = '<tr>'+nameCell+emailCell+phoneCell+deleteCell+'</tr>';
+        
+          $('#patient_info > tbody:last').append(tableRow);
+
+       }    
+        
+             
+       function deleteRow (o) {
+          //Delete table row using DOM hierarchy
+          var p=o.parentNode.parentNode;
+          p.parentNode.removeChild(p);
+       	
+       }
+    </script>    
+    
+    
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Registration</a>
+        </div>
+       
+      </div>
+      
+    </nav>
+
+    
+    
+    <div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav affix">
+      <li class="active"><a href="#"> Home</a></li>
+    </ul>
+  </div>
+    <div class="span3">
+      <div class="container">
+        <h1>Registration</h1>
+        <p>Please enter your info</p>
+        <span>
+         <form onsubmit="return submitForm()">
+          <div class="form-group">
+             <label for="inputName">Name</label>
+             <input type="text" class="form-control" id="inputName" placeholder="Jane Doe">
+           </div>
+           <div class="form-group">
+             <label for="inputEmail">Email</label>
+             <input type="email" class="form-control" id="inputEmail" placeholder="jane.doe@example.com">
+           </div>
+           <div class="form-group">
+             <label for="inputPhone">Phone</label>
+             <input type="phone" class="form-control" id="inputPhone" placeholder="222-222-2222">
+           </div>
+                    
+           
+           <button type="submit" class="btn btn-success">Add</button>
+         </form>
+        
+        </span>
+        <br /><br />
+        
+        <table class="table" id="patient_info" >
+          <thead>
+          <th>Name</th><th>Email</th><th>Phone</th>
+          </thead>
+          
+          <tbody>
+          <tr>
+             <td>Michael</td>
+             <td>eastendtech@icloud.com</td>
+             <td>904-228-9878</td> 
+             <td><button type="action" class="btn btn-danger" onclick="clicked(this)"> <i class="glyphicon glyphicon-remove"></i></button> </td>  
+                    
+          </tr>
+          </tbody>
+        
+        </table>
+        
+        
+      </div>
+    </div>
+    
+      <div class="container">
+  
+
+      <hr>
+
+      <footer>
+        <p>&copy; Michael Colson 2015</p>
+      </footer>
+    </div> 
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="lib/js/jquery-1.11.2.min.js"></script>
+    <script src="lib/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    
+  </body>
+</html>
